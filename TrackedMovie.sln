@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{3066A69D-CEEF-9E6C-D4D3-9121708C060C}") = "TrackedMovie", "Assembly-CSharp.csproj", "{7DC89F4D-5A9F-3AA6-F7D4-9CDC86A59F87}"
+EndProject
+Project("{3066A69D-CEEF-9E6C-D4D3-9121708C060C}") = "TrackedMovie", "Assembly-CSharp-Editor.csproj", "{A795D5D7-8E72-44A7-5C13-BA57B01B95ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DC89F4D-5A9F-3AA6-F7D4-9CDC86A59F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DC89F4D-5A9F-3AA6-F7D4-9CDC86A59F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DC89F4D-5A9F-3AA6-F7D4-9CDC86A59F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DC89F4D-5A9F-3AA6-F7D4-9CDC86A59F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A795D5D7-8E72-44A7-5C13-BA57B01B95ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A795D5D7-8E72-44A7-5C13-BA57B01B95ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A795D5D7-8E72-44A7-5C13-BA57B01B95ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A795D5D7-8E72-44A7-5C13-BA57B01B95ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
