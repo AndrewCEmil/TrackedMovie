@@ -5,14 +5,11 @@ public class PlayerController : MonoBehaviour {
 
 	public GameObject bullet;
 	public GameObject camera;
-	public GameObject messageBoxObject;
 	private GameObject linkedTarget;
-	private MessageBox messageBox;
 	void Start () {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
 		GameObject levelObject = GameObject.Find ("LevelObject");
 		Physics.bounceThreshold = 0;
-		messageBox = messageBoxObject.GetComponent<MessageBox> ();
 	}
 
 	// Update is called once per frame
@@ -27,14 +24,6 @@ public class PlayerController : MonoBehaviour {
 		Vector3 theForwardDirection = camera.transform.TransformDirection (Vector3.forward);
 		Vector3 realForward = camera.transform.forward;
 		bulletRB.AddForce (theForwardDirection * 200f);
-		SendShootMessage ();
-	}
-
-	void SendShootMessage() {
-		Message message = new Message ();
-		message.type = "shoot";
-		message.action = "shoot";
-		messageBox.SendMessage (message);
 	}
 
 	public void BulletCollided(GameObject bulletObj) {
