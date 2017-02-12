@@ -5,11 +5,14 @@ public class PlayerController : MonoBehaviour {
 
 	public GameObject bullet;
 	public GameObject camera;
+	public GameObject enemyGeneratorObj;
 	private GameObject linkedTarget;
+	private EnemyGenerator enemyGenerator;
 	void Start () {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
 		GameObject levelObject = GameObject.Find ("LevelObject");
 		Physics.bounceThreshold = 0;
+		enemyGenerator = enemyGeneratorObj.GetComponent<EnemyGenerator> ();
 	}
 
 	// Update is called once per frame
@@ -29,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 	public void BulletCollided(GameObject bulletObj) {
 		Destroy (bulletObj);
 		Debug.Log ("Destroyed bullet");
+		enemyGenerator.PlaceNewEnemy();
 	}
 
 	public void BackToLevels() {

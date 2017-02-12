@@ -3,24 +3,30 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour {
 
-	public GameObject messageBoxObject;
-	public string enemyId;
-	public int hitPoints;
-
+	private int hitPoints;
 	private int health;
 	private Vector3 moveVector;
+	private int speed;
+	private GameObject target;
 	void Start () {
-		health = hitPoints;
-		moveVector = new Vector3 (0, 0, .1f);
 	}
-	
+
+	public void Initialize(int hitPoints, Vector3 startPosition, int speed, GameObject target) {
+		this.hitPoints = hitPoints;
+		this.health = this.hitPoints;
+		transform.position = startPosition;
+		this.speed = speed;
+		this.target = target;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		Move ();
 	}
 
-	void Move() {
-		transform.position = transform.position + moveVector;
+	void Move ()
+	{
+		transform.position = (target.transform.position - transform.position).normalized * speed;
 	}
 
 	void Hit(BulletController bulletController) {
