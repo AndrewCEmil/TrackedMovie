@@ -11,7 +11,7 @@ public class EnemyGenerator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentEnemies = new List<GameObject>();
-		lastPlacementTime = Time.realtimeSinceStartup;
+		lastPlacementTime = Time.realtimeSinceStartup - 10;
 	}
 
 	void Update () {
@@ -31,8 +31,16 @@ public class EnemyGenerator : MonoBehaviour {
 	public void PlaceNewEnemy() {
 		GameObject newEnemy = Instantiate(baseEnemy);
 		EnemyController ec = newEnemy.GetComponent<EnemyController> ();
-		ec.Initialize (2, new Vector3 (10, 1, 10), .01f, player);
+		ec.Initialize (2, GetNextEnemyLocation(), .01f, player);
 		newEnemy.SetActive (true);
 		currentEnemies.Add (newEnemy);
+	}
+
+	private Vector3 GetNextEnemyLocation() {
+		Vector3 startLoc = Random.onUnitSphere * Random.Range(5, 20);
+		startLoc.y = 0;
+		startLoc.z = Mathf.Abs (startLoc.z) + 10;
+		startLoc.x = Mathf.Clamp (startLoc.x, -5, 5);
+		return startLoc;
 	}
 }
