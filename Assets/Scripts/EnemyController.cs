@@ -6,12 +6,12 @@ public class EnemyController : MonoBehaviour {
 	private int hitPoints;
 	private int health;
 	private Vector3 moveVector;
-	private int speed;
+	private float speed;
 	private GameObject target;
 	void Start () {
 	}
 
-	public void Initialize(int hitPoints, Vector3 startPosition, int speed, GameObject target) {
+	public void Initialize(int hitPoints, Vector3 startPosition, float speed, GameObject target) {
 		this.hitPoints = hitPoints;
 		this.health = this.hitPoints;
 		transform.position = startPosition;
@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour {
 
 	void Move ()
 	{
-		transform.position = (target.transform.position - transform.position).normalized * speed;
+		transform.position = transform.position + ((target.transform.position - transform.position).normalized * speed);
 	}
 
 	void Hit(BulletController bulletController) {

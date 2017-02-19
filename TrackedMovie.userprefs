@@ -2,13 +2,17 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyGenerator.cs">
     <Files>
+      <File FileName="Assets/Scripts/EnemyGenerator.cs" Line="13" Column="2" />
       <File FileName="Assets/Scripts/KidController.cs" Line="13" Column="1" />
-      <File FileName="Assets/Scripts/EnemyGenerator.cs" Line="16" Column="25" />
-      <File FileName="Assets/Scripts/EnemyController.cs" Line="21" Column="1" />
+      <File FileName="Assets/Scripts/EnemyController.cs" Line="20" Column="2" />
+      <File FileName="Assets/Scripts/BulletController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="35" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/EnemyController.cs" line="29" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
