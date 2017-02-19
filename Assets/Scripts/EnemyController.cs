@@ -36,13 +36,13 @@ public class EnemyController : MonoBehaviour {
 
 	void TakeDamage (int damageAmount) {
 		health = health - damageAmount;
-		if (health < 0) {
+		if (health <= 0) {
 			Die ();
 		}
 	}
 
 	void Die() {
-		//TODO
+		//TODO do I need to destroy the object?
 		Debug.Log("I am dead");
 		gameObject.SetActive (false);
 	}

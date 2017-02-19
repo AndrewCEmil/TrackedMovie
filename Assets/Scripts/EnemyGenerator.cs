@@ -16,7 +16,7 @@ public class EnemyGenerator : MonoBehaviour {
 		//TODO
 		GameObject newEnemy = Instantiate(baseEnemy);
 		EnemyController ec = newEnemy.GetComponent<EnemyController> ();
-		ec.Initialize (10, new Vector3 (10, 1, 10), .01f, player);
+		ec.Initialize (2, new Vector3 (10, 1, 10), .01f, player);
 		newEnemy.SetActive (true);
 		currentEnemies.Add (newEnemy);
 	}
