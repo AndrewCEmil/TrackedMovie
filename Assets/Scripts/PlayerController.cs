@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour {
 	public GameObject enemyGeneratorObj;
 	private GameObject linkedTarget;
 	private EnemyGenerator enemyGenerator;
+	private AudioSource audioSource;
 	void Start () {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
 		GameObject levelObject = GameObject.Find ("LevelObject");
 		Physics.bounceThreshold = 0;
 		enemyGenerator = enemyGeneratorObj.GetComponent<EnemyGenerator> ();
+		audioSource = GetComponentInChildren<AudioSource> ();
 	}
 
 	// Update is called once per frame
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour {
 		Vector3 theForwardDirection = camera.transform.TransformDirection (Vector3.forward);
 		Vector3 realForward = camera.transform.forward;
 		bulletRB.AddForce (theForwardDirection * 200f);
+		PlayShootNoise ();
 	}
 
 	public void BulletCollided(GameObject bulletObj) {
@@ -37,6 +40,10 @@ public class PlayerController : MonoBehaviour {
 
 	public void BackToLevels() {
 		Application.LoadLevel("LevelScene");
+	}
+
+	private void PlayShootNoise() {
+		audioSource.Play();
 	}
 
 	void OnEnable(){
