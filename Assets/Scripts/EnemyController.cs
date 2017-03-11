@@ -66,6 +66,7 @@ public class EnemyController : MonoBehaviour {
 		//TODO do I need to destroy the object?
 		Debug.Log("I am dead");
 		gameObject.SetActive (false);
+		Destroy (gameObject);
 	}
 
 	void OnTriggerEnter(Collider other) {
