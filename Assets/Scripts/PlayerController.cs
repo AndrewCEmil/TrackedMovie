@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 	private GameObject currentWaypoint;
 	private bool inTransit;
 	private float speed;
+	private bool waypointGazing;
 	void Start () {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
 		GameObject levelObject = GameObject.Find ("LevelObject");
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour {
 		audioSource = GetComponentInChildren<AudioSource> ();
 		inTransit = false;
 		speed = 0.1f;
+		waypointGazing = false;
 	}
 
 	// Update is called once per frame
@@ -28,7 +30,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Shoot() {
-		//TODO dont shoot if we are selecting a waypoint
+		if (!ShouldShoot()) {
+			return;
+		}
 		GameObject newBullet = Instantiate (bullet);
 		newBullet.SetActive (true);
 		newBullet.transform.position = transform.position + camera.transform.forward;
@@ -37,6 +41,14 @@ public class PlayerController : MonoBehaviour {
 		Vector3 realForward = camera.transform.forward;
 		bulletRB.AddForce (theForwardDirection * 200f);
 		PlayShootNoise ();
+	}
+
+	bool ShouldShoot() {
+		return !waypointGazing;
+	}
+
+	public void SetWaypointGazing(bool isGazing) {
+		waypointGazing = isGazing;
 	}
 
 	private void HandleMovement() {

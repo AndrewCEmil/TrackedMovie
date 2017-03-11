@@ -13,6 +13,7 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 		isSelected = false;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
+
 	}
 	
 	// Update is called once per frame
@@ -22,6 +23,7 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 
 	private void SetGazedAt(bool isGazedAt) {
 		this.isGazedAt = isGazedAt;
+		playerController.SetWaypointGazing (isGazedAt);
 	}
 
 	private void WaypointTriggered() {
@@ -37,9 +39,9 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 		if (isSelected) {
 			TurnBlue ();
 		} else if (isGazedAt) {
-			TurnGreen ();
+			TurnWhite (); //TODO this is a dumb color
 		} else {
-			TurnRed ();
+			TurnGreen ();
 		}
 	}
 
@@ -51,8 +53,8 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 		GetComponent<Renderer> ().material.color = Color.green;
 	}
 
-	private void TurnRed() {
-		GetComponent<Renderer> ().material.color = Color.red;
+	private void TurnWhite() {
+		GetComponent<Renderer> ().material.color = Color.white;
 	}
 
 
