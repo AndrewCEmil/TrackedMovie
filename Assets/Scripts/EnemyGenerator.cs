@@ -37,10 +37,7 @@ public class EnemyGenerator : MonoBehaviour {
 	}
 
 	private Vector3 GetNextEnemyLocation() {
-		Vector3 startLoc = Random.onUnitSphere * Random.Range(5, 20);
-		startLoc.y = 0;
-		startLoc.z = Mathf.Abs (startLoc.z) + 10;
-		startLoc.x = Mathf.Clamp (startLoc.x, -5, 5);
+		Vector3 startLoc = new Vector3 (Random.Range (-40, 40), -2.5f, 70);
 		return startLoc;
 	}
 }
