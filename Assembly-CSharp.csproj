@@ -160,6 +160,7 @@
      <Compile Include="Assets\Scripts\KidController.cs" />
      <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\MusicController.cs" />
+     <Compile Include="Assets\Scripts\PathFinder.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\SphereController.cs" />
      <Compile Include="Assets\Scripts\SpriteController.cs" />

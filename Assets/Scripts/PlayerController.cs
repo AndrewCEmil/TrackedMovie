@@ -51,6 +51,13 @@ public class PlayerController : MonoBehaviour {
 		waypointGazing = isGazing;
 	}
 
+	public string GetCurrentWaypoint() {
+		if (currentWaypoint == null) {
+			return "StartWaypoint";
+		}
+		return currentWaypoint.name;
+	}
+
 	private void HandleMovement() {
 		if (InRangeOfWaypoint ()) {
 			inTransit = false;

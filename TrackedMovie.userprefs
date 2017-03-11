@@ -1,16 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PathFinder.cs">
     <Files>
-      <File FileName="Assets/Scripts/EnemyController.cs" Line="38" Column="1" />
-      <File FileName="Assets/Scripts/EnemyGenerator.cs" Line="42" Column="42" />
-      <File FileName="Assets/Scripts/KidController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="70" Column="1" />
+      <File FileName="Assets/Scripts/EnemyController.cs" Line="36" Column="1" />
+      <File FileName="Assets/Scripts/EnemyGenerator.cs" Line="36" Column="46" />
       <File FileName="Assets/Scripts/BulletController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="47" Column="1" />
+      <File FileName="Assets/Scripts/WaypointController.cs" Line="29" Column="1" />
+      <File FileName="Assets/Scripts/PathFinder.cs" Line="42" Column="1" />
+      <File FileName="Assets/Scripts/SphereController.cs" Line="15" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PathFinder.cs" line="24" column="1" />
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PathFinder.cs" line="32" column="1" />
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PathFinder.cs" line="42" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

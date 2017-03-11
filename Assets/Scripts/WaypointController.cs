@@ -13,7 +13,6 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 		isSelected = false;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
-
 	}
 	
 	// Update is called once per frame

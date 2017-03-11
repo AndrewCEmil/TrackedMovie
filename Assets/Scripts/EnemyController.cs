@@ -7,16 +7,23 @@ public class EnemyController : MonoBehaviour {
 	private int health;
 	private Vector3 moveVector;
 	private float speed;
-	private GameObject target;
+	private GameObject currentPathTarget;
+	private GameObject player;
+	private PlayerController playerController;
+	private PathFinder pathFinder;
 	void Start () {
 	}
 
-	public void Initialize(int hitPoints, Vector3 startPosition, float speed, GameObject target) {
+	public void Initialize(int hitPoints, Vector3 startPosition, float speed, GameObject player, GameObject target) {
 		this.hitPoints = hitPoints;
 		this.health = this.hitPoints;
 		transform.position = startPosition;
 		this.speed = speed;
-		this.target = target;
+		this.player = player;
+		this.playerController = player.GetComponent<PlayerController> ();
+		this.currentPathTarget = target;
+		GameObject pathFinderObj = GameObject.Find ("PathFinder");
+		pathFinder = pathFinderObj.GetComponent<PathFinder> ();
 	}
 
 	// Update is called once per frame
@@ -26,7 +33,21 @@ public class EnemyController : MonoBehaviour {
 
 	void Move ()
 	{
-		transform.position = transform.position + ((target.transform.position - transform.position).normalized * speed);
+		if(AtTarget()) {
+			UpdateTarget ();
+		}
+		transform.position = transform.position + ((currentPathTarget.transform.position - transform.position).normalized * speed);
+	}
+
+	private bool AtTarget() {
+		return Vector3.Distance (transform.position, currentPathTarget.transform.position) < 1;
+	}
+
+	void UpdateTarget() {
+		if (currentPathTarget.name == playerController.GetCurrentWaypoint ()) {
+			return;
+		}
+		currentPathTarget = pathFinder.GetNextWaypoint (currentPathTarget.name, playerController.GetCurrentWaypoint ());
 	}
 
 	void Hit(BulletController bulletController) {
