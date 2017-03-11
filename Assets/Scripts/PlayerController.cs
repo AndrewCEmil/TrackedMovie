@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 		Rigidbody bulletRB = newBullet.GetComponent<Rigidbody> ();
 		Vector3 theForwardDirection = camera.transform.TransformDirection (Vector3.forward);
 		Vector3 realForward = camera.transform.forward;
-		bulletRB.AddForce (theForwardDirection * 200f);
+		bulletRB.AddForce (theForwardDirection * 2000f);
 		PlayShootNoise ();
 	}
 
