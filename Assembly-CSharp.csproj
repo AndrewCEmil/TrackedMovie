@@ -70,8 +70,6 @@
      <Compile Include="Assets\Cardboard\Scripts\VRDevices\CardboardiOSDevice.cs" />
      <Compile Include="Assets\Cardboard\Scripts\VRDevices\UnityEditorDevice.cs" />
      <Compile Include="Assets\House1\Scripts\ControlHouse.cs" />
-     <Compile Include="Assets\Scenes\DemoScene\FPS.cs" />
-     <Compile Include="Assets\Scenes\DemoScene\Teleport.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
