@@ -32,6 +32,14 @@ public class MenuController : MonoBehaviour {
 		Application.LoadLevel ("LevelScene");
 	}
 
+	public void LoadChapterZero() {
+		Application.LoadLevel ("ChapterZeroScene");
+	}
+
+	public void LoadChapterOne() {
+		Application.LoadLevel ("HouseScene");
+	}
+
 	public void LoadAboutScene() {
 		Application.LoadLevel ("AboutScene");
 	}
