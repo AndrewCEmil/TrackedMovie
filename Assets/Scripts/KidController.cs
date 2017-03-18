@@ -1,20 +1,31 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 
 public class KidController : MonoBehaviour {
 
-	IList<string> path;
-	GameObject currentWaypoint;
+	private IList<string> path;
+	private GameObject currentWaypoint;
 	private float speed;
+	private string sceneName;
 	// Use this for initialization
 	void Start () {
 		CreatePath ();
 		currentWaypoint = GameObject.Find ("StairWaypoint");
 		speed = 0.03f;
+		sceneName = SceneManager.GetActiveScene ().name;
 	}
 
 	void CreatePath() {
+		if (sceneName == "HouseScene") {
+			CreateHousePath ();
+		} else if (sceneName == "ParkScene") {
+			CreateParkPath ();
+		}
+	}
+
+	void CreateHousePath() {
 		path = new List<string> () {
 			"StairWaypoint", 
 			"PorchWaypoint", 
@@ -27,7 +38,11 @@ public class KidController : MonoBehaviour {
 			"BedroomWaypoint"
 		};
 	}
-	
+
+	void CreateParkPath() {
+		//TODO
+	}
+
 	// Update is called once per frame
 	void Update () {
 		Move ();
@@ -61,6 +76,11 @@ public class KidController : MonoBehaviour {
 	}
 
 	private bool InTerminalPosition() {
-		return currentWaypoint.name == "BedroomWaypoint";
+		if (sceneName == "HouseScene") {
+			return currentWaypoint.name == "BedroomWaypoint";
+		} else if (sceneName == "ParkScene") {
+			//TODO
+		}
+		return false;
 	}
 }

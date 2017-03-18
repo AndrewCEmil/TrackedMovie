@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -49,6 +50,18 @@ public class PathFinder : MonoBehaviour {
 
 	//Note that the tree is the inverse path because we find our way backwards
 	void InitializeTree() {
+		string sceneName = SceneManager.GetActiveScene ().name;
+		if (sceneName == "HouseScene") {
+			InitializeHouseTree ();
+		} else if (sceneName == "ParkScene") {
+			InitializeParkTree ();
+		}
+	}
+	void InitializeParkTree() {
+		//TODO
+	}
+
+	void InitializeHouseTree() {
 		waypointMap = new Dictionary<string, IList<string>> ();
 		parentMap = new Dictionary<string, string> ();
 
