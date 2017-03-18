@@ -11,6 +11,7 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 	void Start () {
 		isGazedAt = false;
 		isSelected = false;
+		TurnGreen ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
 	}
@@ -45,15 +46,15 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 	}
 
 	private void TurnBlue() {
-		GetComponent<Renderer> ().material.color = Color.blue;
+		GetComponent<Renderer> ().material.color = new Color (0f, 0f, 1f, .5f);
 	}
 
 	private void TurnGreen() {
-		GetComponent<Renderer> ().material.color = Color.green;
+		GetComponent<Renderer> ().material.color = new Color (0f, 1f, 0f, .5f);
 	}
 
 	private void TurnWhite() {
-		GetComponent<Renderer> ().material.color = Color.white;
+		GetComponent<Renderer> ().material.color = new Color (0f, 0f, 0f, .5f);
 	}
 
 
