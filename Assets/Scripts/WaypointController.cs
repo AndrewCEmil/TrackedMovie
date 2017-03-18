@@ -7,23 +7,39 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 	private bool isSelected;
 	private GameObject player;
 	private PlayerController playerController;
+	private float fader;
+	private Material material;
 	// Use this for initialization
 	void Start () {
 		isGazedAt = false;
 		isSelected = false;
-		TurnGreen ();
+		fader = 0f;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerController = player.GetComponent<PlayerController> ();
+		material = gameObject.GetComponent<Renderer> ().material;
+		TurnBlue ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		UpdateColor ();
+	}
+
+	void UpdateColor() {
+		if (fader != 0) {
+			Color curColor = material.color;
+			curColor.a = curColor.a + fader;
+			material.color = curColor;
+			if (curColor.a < 0 || curColor.a > .5) {
+				fader = 0;
+			}
+		}
 	}
 
 	private void SetGazedAt(bool isGazedAt) {
 		this.isGazedAt = isGazedAt;
 		playerController.SetWaypointGazing (isGazedAt);
+		SetColor ();
 	}
 
 	private void WaypointTriggered() {
@@ -31,33 +47,47 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 	}
 
 	public void CurrentlySelected(bool isSelected) {
+		if (this.isSelected && !isSelected) { //if unselected
+			FadeIn ();
+		}
 		this.isSelected = isSelected;
 		SetColor ();
 	}
 
 	private void SetColor() {
 		if (isSelected) {
-			TurnBlue ();
+			FadeOut ();
 		} else if (isGazedAt) {
 			TurnWhite (); //TODO this is a dumb color
 		} else {
-			TurnGreen ();
+			TurnBlue ();
 		}
 	}
 
 	private void TurnBlue() {
-		GetComponent<Renderer> ().material.color = new Color (0f, 0f, 1f, .5f);
+		material.color = new Color (0f, 0f, 1f, material.color.a);
 	}
 
 	private void TurnGreen() {
-		GetComponent<Renderer> ().material.color = new Color (0f, 1f, 0f, .5f);
+		material.color = new Color (0f, 1f, 0f, material.color.a);
 	}
 
 	private void TurnWhite() {
-		GetComponent<Renderer> ().material.color = new Color (0f, 0f, 0f, .5f);
+		material.color = new Color (0f, 0f, 0f, material.color.a);
 	}
 
+	public void Dissapear() {
+		gameObject.GetComponent<Renderer> ().enabled = false;
+	}
 
+	private void FadeOut() {
+		fader = -.01f;
+	}
+
+	private void FadeIn() {
+		fader = .01f;
+		gameObject.GetComponent<Renderer> ().enabled = true;
+	}
 	#region ICardboardGazeResponder implementation
 
 	/// Called when the user is looking on a GameObject with this script,

@@ -61,6 +61,9 @@ public class PlayerController : MonoBehaviour {
 	private void HandleMovement() {
 		if (InRangeOfWaypoint ()) {
 			inTransit = false;
+			if (currentWaypoint != null) {
+				currentWaypoint.GetComponent<WaypointController> ().Dissapear ();
+			}
 		} else {
 			DoMovement ();
 		}
