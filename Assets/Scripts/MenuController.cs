@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour {
 
@@ -17,31 +18,31 @@ public class MenuController : MonoBehaviour {
 	}
 
 	public void LoadGame() {
-		Application.LoadLevel("DemoScene");
+		SceneManager.LoadScene("DemoScene");
 	}
 
 	public void LoadSettings() {
-		Application.LoadLevel ("SettingsScene");
+		SceneManager.LoadScene ("SettingsScene");
 	}
 
 	public void LoadStart() {
-		Application.LoadLevel ("StartScene");
+		SceneManager.LoadScene ("StartScene");
 	}
 
 	public void LoadLevelSelection() {
-		Application.LoadLevel ("LevelScene");
+		SceneManager.LoadScene ("LevelScene");
 	}
 
 	public void LoadChapterZero() {
-		Application.LoadLevel ("ChapterZeroScene");
+		SceneManager.LoadScene ("ChapterZeroScene");
 	}
 
 	public void LoadChapterOne() {
-		Application.LoadLevel ("HouseScene");
+		SceneManager.LoadScene ("HouseScene");
 	}
 
 	public void LoadAboutScene() {
-		Application.LoadLevel ("AboutScene");
+		SceneManager.LoadScene ("AboutScene");
 	}
 
 	public void SetMusicVolume() {
