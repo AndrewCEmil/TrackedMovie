@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 
@@ -13,15 +15,37 @@ public class PlayerController : MonoBehaviour {
 	private bool inTransit;
 	private float speed;
 	private bool waypointGazing;
+	private string sceneName;
+	private IList<string> path;
 	void Start () {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
 		GameObject levelObject = GameObject.Find ("LevelObject");
 		Physics.bounceThreshold = 0;
-		enemyGenerator = enemyGeneratorObj.GetComponent<EnemyGenerator> ();
 		audioSource = GetComponentInChildren<AudioSource> ();
 		inTransit = false;
 		speed = 0.1f;
 		waypointGazing = false;
+		sceneName = SceneManager.GetActiveScene ().name;
+		if (sceneName == "ParkScene") {
+			GetPath ();
+			currentWaypoint = GameObject.Find ("W0");
+		} else if (sceneName == "HouseScene") {
+			enemyGenerator = enemyGeneratorObj.GetComponent<EnemyGenerator> ();
+		}
+	}
+
+	private void GetPath() {
+		path = new List<string> () {
+			"W0", 
+			"W1", 
+			"W2", 
+			"W3", 
+			"W4",
+			"W5",
+			"W6",
+			"W7",
+			"W8"
+		};
 	}
 
 	// Update is called once per frame
@@ -59,6 +83,15 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void HandleMovement() {
+		if (sceneName == "HouseScene") {
+			HandleHouseMovement ();
+		} else if (sceneName == "ParkScene") {
+			HandleParkMovement ();
+		}
+
+	}
+
+	private void HandleHouseMovement() {
 		if (InRangeOfWaypoint ()) {
 			inTransit = false;
 			if (currentWaypoint != null) {
@@ -67,6 +100,36 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			DoMovement ();
 		}
+	}
+
+	private void HandleParkMovement() {
+		if (AtTarget ()) {
+			MaybeUpdateTarget ();
+		} else {
+			transform.position = transform.position + ((currentWaypoint.transform.position - transform.position).normalized * speed);
+		}
+	}
+
+	private bool AtTarget() {
+		return Vector3.Distance (transform.position, currentWaypoint.transform.position) < 1;
+	}
+
+	private void MaybeUpdateTarget() {
+		//TODO delay on moving to next target
+		if(ShouldUpdateTarget()) {
+			currentWaypoint = GameObject.Find (path [path.IndexOf (currentWaypoint.name) + 1]);
+		}
+	}
+
+	private bool ShouldUpdateTarget() {
+		if (InTerminalPosition ()) {
+			return false;
+		}
+		return true;
+	}
+
+	private bool InTerminalPosition() {
+		return currentWaypoint.name == "W7";
 	}
 
 	private void DoMovement() {
@@ -86,10 +149,6 @@ public class PlayerController : MonoBehaviour {
 		Destroy (bulletObj);
 		Debug.Log ("Destroyed bullet");
 		enemyGenerator.PlaceNewEnemy();
-	}
-
-	public void BackToLevels() {
-		Application.LoadLevel("LevelScene");
 	}
 
 	private void PlayShootNoise() {

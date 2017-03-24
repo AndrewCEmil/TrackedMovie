@@ -11,10 +11,14 @@ public class KidController : MonoBehaviour {
 	private string sceneName;
 	// Use this for initialization
 	void Start () {
-		CreatePath ();
-		currentWaypoint = GameObject.Find ("StairWaypoint");
-		speed = 0.03f;
 		sceneName = SceneManager.GetActiveScene ().name;
+		CreatePath ();
+		if (sceneName == "HouseScene") {
+			currentWaypoint = GameObject.Find ("StairWaypoint");
+		} else if (sceneName == "ParkScene") {
+			currentWaypoint = GameObject.Find ("W0");
+		}
+		speed = 0.03f;
 	}
 
 	void CreatePath() {
@@ -40,7 +44,17 @@ public class KidController : MonoBehaviour {
 	}
 
 	void CreateParkPath() {
-		//TODO
+		path = new List<string> () {
+			"W0", 
+			"W1", 
+			"W2", 
+			"W3", 
+			"W4",
+			"W5",
+			"W6",
+			"W7",
+			"W8"
+		};
 	}
 
 	// Update is called once per frame
