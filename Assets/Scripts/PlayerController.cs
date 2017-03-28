@@ -20,14 +20,15 @@ public class PlayerController : MonoBehaviour {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
 		Physics.bounceThreshold = 0;
 		audioSource = GetComponentInChildren<AudioSource> ();
-		speed = 0.1f;
 		waypointGazing = false;
 		sceneName = SceneManager.GetActiveScene ().name;
 		if (sceneName == "ParkScene") {
 			GetPath ();
 			currentWaypoint = GameObject.Find ("W0");
+			speed = 0.029f;
 		} else if (sceneName == "HouseScene") {
 			enemyGenerator = enemyGeneratorObj.GetComponent<EnemyGenerator> ();
+			speed = 0.1f;
 		}
 	}
 
