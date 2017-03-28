@@ -12,17 +12,14 @@ public class PlayerController : MonoBehaviour {
 	private EnemyGenerator enemyGenerator;
 	private AudioSource audioSource;
 	private GameObject currentWaypoint;
-	private bool inTransit;
 	private float speed;
 	private bool waypointGazing;
 	private string sceneName;
 	private IList<string> path;
 	void Start () {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
-		GameObject levelObject = GameObject.Find ("LevelObject");
 		Physics.bounceThreshold = 0;
 		audioSource = GetComponentInChildren<AudioSource> ();
-		inTransit = false;
 		speed = 0.1f;
 		waypointGazing = false;
 		sceneName = SceneManager.GetActiveScene ().name;
@@ -93,7 +90,6 @@ public class PlayerController : MonoBehaviour {
 
 	private void HandleHouseMovement() {
 		if (InRangeOfWaypoint ()) {
-			inTransit = false;
 			if (currentWaypoint != null) {
 				currentWaypoint.GetComponent<WaypointController> ().Dissapear ();
 			}

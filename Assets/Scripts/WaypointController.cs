@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
@@ -18,6 +19,9 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 		playerController = player.GetComponent<PlayerController> ();
 		material = gameObject.GetComponent<Renderer> ().material;
 		TurnBlue ();
+		if (SceneManager.GetActiveScene ().name == "ParkScene") {
+			Dissapear ();
+		}
 	}
 	
 	// Update is called once per frame
