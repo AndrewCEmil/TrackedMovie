@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class EnemyController : MonoBehaviour {
@@ -11,7 +12,10 @@ public class EnemyController : MonoBehaviour {
 	private GameObject player;
 	private PlayerController playerController;
 	private PathFinder pathFinder;
+	private string sceneName;
+	private Vector3 tempPos;
 	void Start () {
+		sceneName = SceneManager.GetActiveScene ().name;
 	}
 
 	public void Initialize(int hitPoints, Vector3 startPosition, float speed, GameObject player, GameObject target) {
@@ -28,7 +32,18 @@ public class EnemyController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Move ();
+		if (sceneName == "HouseScene") {
+			Move ();
+		} else if (sceneName == "ParkScene") {
+			MovePark ();
+		}
+	}
+
+	void MovePark() {
+		//TODO
+		tempPos = transform.position + Random.onUnitSphere / 10;
+		tempPos.y = -3.5f;
+		transform.position = tempPos;
 	}
 
 	void Move ()

@@ -11,12 +11,23 @@ public class EnemyGenerator : MonoBehaviour {
 	List<GameObject> currentEnemies;
 	private float lastPlacementTime;
 	private string sceneName;
+	private Vector3 boxPosition;
 	// Use this for initialization
 	void Start () {
 		currentEnemies = new List<GameObject>();
 		lastPlacementTime = Time.realtimeSinceStartup - 10;
 		startWaypoint = GameObject.Find ("StartWaypoint");
 		sceneName = SceneManager.GetActiveScene ().name;
+		if (sceneName == "ParkScene") {
+			boxPosition = new Vector3 (108f, -3.5f, 3f);
+			InitializeParkEnemies ();
+		}
+	}
+
+	private void InitializeParkEnemies() {
+		for (int i = 0; i < 100; i++) {
+			PlaceNewEnemy ();
+		}
 	}
 
 	void Update () {
@@ -64,7 +75,14 @@ public class EnemyGenerator : MonoBehaviour {
 	}
 
 	private void PlaceNewEnemyPark() {
-		//TODO
+		Vector3 position = Random.insideUnitSphere * 10f;
+		position = position + boxPosition;
+		position.y = boxPosition.y;
+		GameObject newEnemy = Instantiate(baseEnemy);
+		EnemyController ec = newEnemy.GetComponent<EnemyController> ();
+		ec.Initialize (2, position, .1f, player, startWaypoint);
+		newEnemy.SetActive (true);
+		currentEnemies.Add (newEnemy);
 	}
 
 	private Vector3 GetNextEnemyLocation() {
