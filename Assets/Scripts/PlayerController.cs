@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	bool ShouldShoot() {
-		return !waypointGazing;
+		return !waypointGazing && sceneName == "HouseScene";
 	}
 
 	public void SetWaypointGazing(bool isGazing) {
