@@ -51,9 +51,7 @@ public class KidController : MonoBehaviour {
 			"W3", 
 			"W4",
 			"W5",
-			"W6",
-			"W7",
-			"W8"
+			"W6"
 		};
 	}
 

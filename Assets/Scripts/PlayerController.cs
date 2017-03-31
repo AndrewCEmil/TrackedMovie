@@ -39,10 +39,7 @@ public class PlayerController : MonoBehaviour {
 			"W2", 
 			"W3", 
 			"W4",
-			"W5",
-			"W6",
-			"W7",
-			"W8"
+			"W5"
 		};
 	}
 
