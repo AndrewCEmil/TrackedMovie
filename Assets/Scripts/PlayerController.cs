@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	private bool waypointGazing;
 	private string sceneName;
 	private IList<string> path;
+	private Vector3 waypointOffset;
 	void Start () {
 		Physics.gravity = new Vector3(0, -0.2F, 0);
 		Physics.bounceThreshold = 0;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 			GetPath ();
 			currentWaypoint = GameObject.Find ("W0");
 			speed = 0.029f;
+			waypointOffset = new Vector3 (0, 0, -2.0f);
 		} else if (sceneName == "HouseScene") {
 			enemyGenerator = enemyGeneratorObj.GetComponent<EnemyGenerator> ();
 			speed = 0.1f;
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour {
 			"W2", 
 			"W3", 
 			"W4",
-			"W5"
+			"W5",
+			"W6"
 		};
 	}
 
@@ -100,12 +103,12 @@ public class PlayerController : MonoBehaviour {
 		if (AtTarget ()) {
 			MaybeUpdateTarget ();
 		} else {
-			transform.position = transform.position + ((currentWaypoint.transform.position - transform.position).normalized * speed);
+			transform.position = transform.position + (((currentWaypoint.transform.position + waypointOffset) - transform.position).normalized * speed);
 		}
 	}
 
 	private bool AtTarget() {
-		return Vector3.Distance (transform.position, currentWaypoint.transform.position) < 1;
+		return Vector3.Distance (transform.position, currentWaypoint.transform.position + waypointOffset) < 1;
 	}
 
 	private void MaybeUpdateTarget() {
