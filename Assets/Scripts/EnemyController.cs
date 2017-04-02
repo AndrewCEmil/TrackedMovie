@@ -43,6 +43,8 @@ public class EnemyController : MonoBehaviour {
 		//TODO
 		tempPos = transform.position + Random.onUnitSphere / 10;
 		tempPos.y = -3.5f;
+		tempPos.x = Mathf.Clamp (tempPos.x, 96, 119);
+		tempPos.z = Mathf.Clamp (tempPos.z, -8, 15);
 		transform.position = tempPos;
 	}
 
