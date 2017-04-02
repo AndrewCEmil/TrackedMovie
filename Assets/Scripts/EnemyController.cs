@@ -12,10 +12,10 @@ public class EnemyController : MonoBehaviour {
 	private GameObject player;
 	private PlayerController playerController;
 	private PathFinder pathFinder;
-	private string sceneName;
+	private Scenes.SceneName sceneName;
 	private Vector3 tempPos;
 	void Start () {
-		sceneName = SceneManager.GetActiveScene ().name;
+		sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
 	}
 
 	public void Initialize(int hitPoints, Vector3 startPosition, float speed, GameObject player, GameObject target) {
@@ -32,9 +32,9 @@ public class EnemyController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (sceneName == "HouseScene") {
+		if (Scenes.isHouseScene(sceneName)) {
 			Move ();
-		} else if (sceneName == "ParkScene") {
+		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			MovePark ();
 		}
 	}
@@ -43,7 +43,7 @@ public class EnemyController : MonoBehaviour {
 		//TODO
 		tempPos = transform.position + Random.onUnitSphere / 10;
 		tempPos.y = -3.5f;
-		tempPos.x = Mathf.Clamp (tempPos.x, 96, 119);
+		tempPos.x = Mathf.Clamp (tempPos.x, 95, 119);
 		tempPos.z = Mathf.Clamp (tempPos.z, -8, 15);
 		transform.position = tempPos;
 	}

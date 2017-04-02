@@ -50,10 +50,10 @@ public class PathFinder : MonoBehaviour {
 
 	//Note that the tree is the inverse path because we find our way backwards
 	void InitializeTree() {
-		string sceneName = SceneManager.GetActiveScene ().name;
-		if (sceneName == "HouseScene") {
+		Scenes.SceneName sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
+		if (Scenes.isHouseScene(sceneName)) {
 			InitializeHouseTree ();
-		} else if (sceneName == "ParkScene") {
+		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			InitializeParkTree ();
 		}
 	}

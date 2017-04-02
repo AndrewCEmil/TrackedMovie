@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 	private GameObject currentWaypoint;
 	private float speed;
 	private bool waypointGazing;
-	private string sceneName;
+	private Scenes.SceneName sceneName;
 	private IList<string> path;
 	private Vector3 waypointOffset;
 	void Start () {
@@ -22,13 +22,13 @@ public class PlayerController : MonoBehaviour {
 		Physics.bounceThreshold = 0;
 		audioSource = GetComponentInChildren<AudioSource> ();
 		waypointGazing = false;
-		sceneName = SceneManager.GetActiveScene ().name;
-		if (sceneName == "ParkScene") {
+		sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
+		if (sceneName == Scenes.SceneName.ParkScene) {
 			GetPath ();
 			currentWaypoint = GameObject.Find ("W0");
 			speed = 0.029f;
 			waypointOffset = new Vector3 (0, 0, -2.0f);
-		} else if (sceneName == "HouseScene") {
+		} else if (Scenes.isHouseScene (sceneName)) {
 			enemyGenerator = enemyGeneratorObj.GetComponent<EnemyGenerator> ();
 			speed = 0.1f;
 		}
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	bool ShouldShoot() {
-		return !waypointGazing && sceneName == "HouseScene";
+		return !waypointGazing && Scenes.isHouseScene (sceneName);
 	}
 
 	public void SetWaypointGazing(bool isGazing) {
@@ -81,9 +81,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private void HandleMovement() {
-		if (sceneName == "HouseScene") {
+		if (Scenes.isHouseScene(sceneName)) {
 			HandleHouseMovement ();
-		} else if (sceneName == "ParkScene") {
+		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			HandleParkMovement ();
 		}
 

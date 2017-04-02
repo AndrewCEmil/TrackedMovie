@@ -19,7 +19,7 @@ public class WaypointController : MonoBehaviour, ICardboardGazeResponder {
 		playerController = player.GetComponent<PlayerController> ();
 		material = gameObject.GetComponent<Renderer> ().material;
 		TurnBlue ();
-		if (SceneManager.GetActiveScene ().name == "ParkScene") {
+		if (Scenes.getSceneName(SceneManager.GetActiveScene ().name) == Scenes.SceneName.ParkScene) {
 			Dissapear ();
 		}
 	}

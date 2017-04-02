@@ -10,15 +10,15 @@ public class EnemyGenerator : MonoBehaviour {
 	private GameObject startWaypoint;
 	List<GameObject> currentEnemies;
 	private float lastPlacementTime;
-	private string sceneName;
+	private Scenes.SceneName sceneName;
 	private Vector3 boxPosition;
 	// Use this for initialization
 	void Start () {
 		currentEnemies = new List<GameObject>();
 		lastPlacementTime = Time.realtimeSinceStartup - 10;
 		startWaypoint = GameObject.Find ("StartWaypoint");
-		sceneName = SceneManager.GetActiveScene ().name;
-		if (sceneName == "ParkScene") {
+		sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
+		if (sceneName == Scenes.SceneName.ParkScene) {
 			boxPosition = new Vector3 (108f, -3.5f, 3f);
 			InitializeParkEnemies ();
 		}
@@ -37,9 +37,9 @@ public class EnemyGenerator : MonoBehaviour {
 	}
 
 	private bool ShouldPlaceNewEnemy() {
-		if (sceneName == "HouseScene") {
+		if (Scenes.isHouseScene(sceneName)) {
 			return ShouldPlaceNewEnemyHouse ();
-		} else if (sceneName == "ParkScene") {
+		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			return ShouldPlaceNewEnemyPark ();
 		}
 		return false;
@@ -59,9 +59,9 @@ public class EnemyGenerator : MonoBehaviour {
 	}
 
 	public void PlaceNewEnemy() {
-		if (sceneName == "HouseScene") {
+		if (Scenes.isHouseScene(sceneName)) {
 			PlaceNewEnemyHouse ();
-		} else if (sceneName == "ParkScene") {
+		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			PlaceNewEnemyPark ();
 		}
 	}
