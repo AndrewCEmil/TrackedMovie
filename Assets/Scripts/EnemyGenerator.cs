@@ -7,6 +7,7 @@ public class EnemyGenerator : MonoBehaviour {
 
 	public GameObject baseEnemy;
 	public GameObject player;
+	public GameObject child;
 	private GameObject startWaypoint;
 	List<GameObject> currentEnemies;
 	private float lastPlacementTime;
@@ -69,7 +70,7 @@ public class EnemyGenerator : MonoBehaviour {
 	private void PlaceNewEnemyHouse() {
 		GameObject newEnemy = Instantiate(baseEnemy);
 		EnemyController ec = newEnemy.GetComponent<EnemyController> ();
-		ec.Initialize (2, GetNextEnemyLocation(), .1f, player, startWaypoint);
+		ec.Initialize (2, GetNextEnemyLocation(), .1f, player, child, startWaypoint);
 		newEnemy.SetActive (true);
 		currentEnemies.Add (newEnemy);
 	}
@@ -80,7 +81,7 @@ public class EnemyGenerator : MonoBehaviour {
 		position.y = boxPosition.y;
 		GameObject newEnemy = Instantiate(baseEnemy);
 		EnemyController ec = newEnemy.GetComponent<EnemyController> ();
-		ec.Initialize (2, position, .1f, player, startWaypoint);
+		ec.Initialize (2, position, .1f, player, child, startWaypoint);
 		newEnemy.SetActive (true);
 		currentEnemies.Add (newEnemy);
 	}

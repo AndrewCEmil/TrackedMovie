@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour {
 	private float speed;
 	private GameObject currentPathTarget;
 	private GameObject player;
+	private GameObject child;
 	private PlayerController playerController;
 	private PathFinder pathFinder;
 	private Scenes.SceneName sceneName;
@@ -18,12 +19,13 @@ public class EnemyController : MonoBehaviour {
 		sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
 	}
 
-	public void Initialize(int hitPoints, Vector3 startPosition, float speed, GameObject player, GameObject target) {
+	public void Initialize(int hitPoints, Vector3 startPosition, float speed, GameObject player, GameObject child, GameObject target) {
 		this.hitPoints = hitPoints;
 		this.health = this.hitPoints;
 		transform.position = startPosition;
 		this.speed = speed;
 		this.player = player;
+		this.child = child;
 		this.playerController = player.GetComponent<PlayerController> ();
 		this.currentPathTarget = target;
 		GameObject pathFinderObj = GameObject.Find ("PathFinder");
@@ -32,8 +34,10 @@ public class EnemyController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Scenes.isHouseScene(sceneName)) {
-			Move ();
+		if (sceneName == Scenes.SceneName.InnerHouseScene) {
+			MoveInner ();
+		} else if(sceneName == Scenes.SceneName.OuterHouseScene) {
+			MoveOuter ();
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			MovePark ();
 		}
@@ -48,12 +52,16 @@ public class EnemyController : MonoBehaviour {
 		transform.position = tempPos;
 	}
 
-	void Move ()
+	void MoveInner ()
 	{
 		if(AtTarget()) {
 			UpdateTarget ();
 		}
 		transform.position = transform.position + ((currentPathTarget.transform.position - transform.position).normalized * speed);
+	}
+
+	void MoveOuter() {
+		transform.position = transform.position + ((child.transform.position - transform.position).normalized * speed);
 	}
 
 	private bool AtTarget() {

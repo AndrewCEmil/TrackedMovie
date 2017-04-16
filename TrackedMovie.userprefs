@@ -2,20 +2,21 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/KidController.cs">
     <Files>
-      <File FileName="Assets/Scripts/PathFinder.cs" Line="2" Column="22" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="42" Column="7" />
-      <File FileName="Assets/Scripts/EnemyController.cs" Line="44" Column="58" />
-      <File FileName="Assets/Scripts/EnemyGenerator.cs" Line="78" Column="44" />
-      <File FileName="Assets/Scripts/BulletController.cs" Line="21" Column="17" />
-      <File FileName="Assets/Scripts/WaypointController.cs" Line="5" Column="50" />
-      <File FileName="Assets/Scripts/KidController.cs" Line="54" Column="7" />
-      <File FileName="Assets/Scripts/MenuController.cs" Line="63" Column="1" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="27" Column="14" />
+      <File FileName="Assets/Scripts/PathFinder.cs" Line="56" Column="52" />
+      <File FileName="Assets/Scripts/EnemyController.cs" Line="22" Column="110" />
+      <File FileName="Assets/Scripts/EnemyGenerator.cs" Line="84" Column="50" />
+      <File FileName="Assets/Scripts/BulletController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WaypointController.cs" Line="22" Column="92" />
+      <File FileName="Assets/Scripts/KidController.cs" Line="89" Column="54" />
+      <File FileName="Assets/Scripts/MenuController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Scenes.cs" Line="21" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PathFinder.cs" line="34" column="15" />
-      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/EnemyController.cs" line="65" column="1" />
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/EnemyController.cs" line="75" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PathFinder.cs" line="48" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PathFinder.cs" line="27" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/WaypointController.cs" line="80" column="30" />
@@ -23,14 +24,14 @@
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/WaypointController.cs" line="45" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/WaypointController.cs" line="63" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/WaypointController.cs" line="64" column="1" />
-      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="79" column="1" />
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="90" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="19" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="18" column="29" />
-      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="28" column="13" />
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="30" column="13" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="25" column="1" />
       <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/KidController.cs" line="15" column="1" />
-      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PlayerController.cs" line="108" column="1" />
-      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/EnemyGenerator.cs" line="81" column="1" />
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/PlayerController.cs" line="111" column="1" />
+      <Breakpoint file="/Users/ace/Desktop/TrackedMovie/Assets/Scripts/EnemyGenerator.cs" line="82" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -13,23 +13,27 @@ public class KidController : MonoBehaviour {
 	void Start () {
 		sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
 		CreatePath ();
-		if (Scenes.isHouseScene(sceneName)) {
+		if (sceneName == Scenes.SceneName.InnerHouseScene) {
 			currentWaypoint = GameObject.Find ("StairWaypoint");
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			currentWaypoint = GameObject.Find ("W0");
+		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
+			currentWaypoint = GameObject.Find ("MiddleWaypoint");
 		}
 		speed = 0.03f;
 	}
 
 	void CreatePath() {
-		if (Scenes.isHouseScene(sceneName)) {
-			CreateHousePath ();
+		if (sceneName == Scenes.SceneName.InnerHouseScene) {
+			CreateInnerHousePath ();
+		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
+			CreateOuterHousePath ();
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			CreateParkPath ();
 		}
 	}
 
-	void CreateHousePath() {
+	void CreateInnerHousePath() {
 		path = new List<string> () {
 			"StairWaypoint", 
 			"PorchWaypoint", 
@@ -40,6 +44,13 @@ public class KidController : MonoBehaviour {
 			"MainHallwayWaypoint",
 			"MainHallwayEndWaypoint",
 			"BedroomWaypoint"
+		};
+	}
+
+	void CreateOuterHousePath() {
+		path = new List<string> () {
+			"LeftWaypoint",
+			"RightWaypoint"
 		};
 	}
 
@@ -76,11 +87,24 @@ public class KidController : MonoBehaviour {
 	private void MaybeUpdateTarget() {
 		//TODO delay on moving to next target
 		if(ShouldUpdateTarget()) {
-			currentWaypoint = GameObject.Find (path [path.IndexOf (currentWaypoint.name) + 1]);
+			if (sceneName == Scenes.SceneName.OuterHouseScene) {
+				UpdateOuterWaypoint ();
+			} else {
+				currentWaypoint = GameObject.Find (path [path.IndexOf (currentWaypoint.name) + 1]);
+			}
 		}
 	}
 
-	private bool ShouldUpdateTarget() {
+	private void UpdateOuterWaypoint() {
+		if (currentWaypoint.name == "MiddleWaypoint") {
+			currentWaypoint = GameObject.Find (path [Random.Range (0, 1)]);
+		} else {
+			currentWaypoint = GameObject.Find ("MiddleWaypoint");
+		}
+	}
+
+
+	private bool ShouldUpdateTarget () {
 		if (InTerminalPosition ()) {
 			return false;
 		}
