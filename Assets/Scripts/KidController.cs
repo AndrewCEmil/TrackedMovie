@@ -9,6 +9,7 @@ public class KidController : MonoBehaviour {
 	private GameObject currentWaypoint;
 	private float speed;
 	private Scenes.SceneName sceneName;
+	private float startTime;
 	// Use this for initialization
 	void Start () {
 		sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
@@ -21,6 +22,7 @@ public class KidController : MonoBehaviour {
 			currentWaypoint = GameObject.Find ("MiddleWaypoint");
 		}
 		speed = 0.03f;
+		startTime = -1.0f;
 	}
 
 	void CreatePath() {
@@ -69,12 +71,39 @@ public class KidController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Move ();
+		HandleSceneChange ();
+	}
+
+	void HandleSceneChange() {
+		if (InTerminalPosition ()) {
+			if (startTime < 0) {
+				startTime = Time.fixedTime;
+			} else {
+				MaybeChangeScenes ();
+			}
+		}
+	}
+
+	void MaybeChangeScenes() {
+		if (sceneName == Scenes.SceneName.ParkScene) {
+			if (Time.fixedTime - startTime > 20) {
+				SceneController.LoadNextScene(sceneName);
+			}
+		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
+			if (Time.fixedTime - startTime > 20) {
+				SceneController.LoadNextScene(sceneName);
+			}
+		}
 	}
 
 	void Move ()
 	{
 		if (AtTarget ()) {
 			MaybeUpdateTarget ();
+		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
+			Vector3 currentPos = currentWaypoint.transform.position;
+			currentPos.z = currentPos.z - 2;
+			transform.position = transform.position + ((currentPos - transform.position).normalized * speed);
 		} else {
 			transform.position = transform.position + ((currentWaypoint.transform.position - transform.position).normalized * speed);
 		}
