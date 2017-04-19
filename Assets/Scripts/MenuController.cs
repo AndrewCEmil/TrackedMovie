@@ -45,6 +45,14 @@ public class MenuController : MonoBehaviour {
 		SceneManager.LoadScene ("AboutScene");
 	}
 
+	public void LoadOuterHouseScene() {
+		SceneManager.LoadScene ("OuterHouseScene");
+	}
+
+	public void LoadInnerHouseScene() {
+		SceneManager.LoadScene ("InnerHouseScene");
+	}
+
 	public void SetMusicVolume() {
 		AudioSource musicPlayer = GameObject.Find ("MusicPlayer").GetComponent<AudioSource> ();
 		musicPlayer.volume = musicSlider.value;
