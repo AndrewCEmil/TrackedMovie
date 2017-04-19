@@ -37,8 +37,8 @@ public class MenuController : MonoBehaviour {
 		SceneManager.LoadScene ("ChapterZeroScene");
 	}
 
-	public void LoadChapterOne() {
-		SceneManager.LoadScene ("HouseScene");
+	public void LoadParkScene() {
+		SceneManager.LoadScene ("ParkScene");
 	}
 
 	public void LoadAboutScene() {

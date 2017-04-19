@@ -145,7 +145,9 @@ public class PlayerController : MonoBehaviour {
 	public void BulletCollided(GameObject bulletObj) {
 		Destroy (bulletObj);
 		Debug.Log ("Destroyed bullet");
-		enemyGenerator.PlaceNewEnemy();
+		if (sceneName == Scenes.SceneName.InnerHouseScene) {
+			enemyGenerator.PlaceNewEnemy ();
+		}
 	}
 
 	private void PlayShootNoise() {

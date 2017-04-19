@@ -14,15 +14,16 @@ public class KidController : MonoBehaviour {
 	void Start () {
 		sceneName = Scenes.getSceneName (SceneManager.GetActiveScene ().name);
 		CreatePath ();
+		startTime = -1.0f;
 		if (sceneName == Scenes.SceneName.InnerHouseScene) {
 			currentWaypoint = GameObject.Find ("StairWaypoint");
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			currentWaypoint = GameObject.Find ("W0");
 		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
 			currentWaypoint = GameObject.Find ("MiddleWaypoint");
+			startTime = Time.fixedTime;
 		}
 		speed = 0.03f;
-		startTime = -1.0f;
 	}
 
 	void CreatePath() {
@@ -90,7 +91,7 @@ public class KidController : MonoBehaviour {
 				SceneController.LoadNextScene(sceneName);
 			}
 		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
-			if (Time.fixedTime - startTime > 20) {
+			if (Time.fixedTime - startTime > 120) {
 				SceneController.LoadNextScene(sceneName);
 			}
 		}
@@ -144,7 +145,7 @@ public class KidController : MonoBehaviour {
 		if (Scenes.isHouseScene(sceneName)) {
 			return currentWaypoint.name == "BedroomWaypoint";
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
-			//TODO
+			return currentWaypoint.name == "W6";
 		}
 		return false;
 	}
