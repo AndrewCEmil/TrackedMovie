@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class KidController : MonoBehaviour {
 
+	public GameObject player;
+	private PlayerController playerController;
 	private IList<string> path;
 	private GameObject currentWaypoint;
 	private float speed;
@@ -17,10 +19,12 @@ public class KidController : MonoBehaviour {
 		startTime = -1.0f;
 		if (sceneName == Scenes.SceneName.InnerHouseScene) {
 			currentWaypoint = GameObject.Find ("StairWaypoint");
+			playerController = player.GetComponent<PlayerController> ();
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			currentWaypoint = GameObject.Find ("W0");
 		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
 			currentWaypoint = GameObject.Find ("MiddleWaypoint");
+			playerController = player.GetComponent<PlayerController> ();
 			startTime = Time.fixedTime;
 		}
 		speed = 0.03f;
@@ -148,5 +152,22 @@ public class KidController : MonoBehaviour {
 			return currentWaypoint.name == "W6";
 		}
 		return false;
+	}
+
+	void OnTriggerEnter(Collider other) {
+		Debug.Log ("KID COLLIDED");
+		if (other.CompareTag ("Bullet")) {
+			BulletHit (other.gameObject.GetComponent<BulletController> ());
+		} else if(other.CompareTag("Enemy")) {
+			EnemyHit();
+		}
+	}
+
+	void BulletHit(BulletController bulletController) {
+		playerController.ChildShot ();
+	}
+
+	void EnemyHit() {
+		playerController.ChildEaten ();
 	}
 }

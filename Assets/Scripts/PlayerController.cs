@@ -180,4 +180,12 @@ public class PlayerController : MonoBehaviour {
 		currentWaypoint = waypoint;
 		currentWaypoint.GetComponent<WaypointController> ().CurrentlySelected (true);
 	}
+
+	public void ChildShot() {
+		//TODO
+	}
+
+	public void ChildEaten() {
+		//TODO
+	}
 }
