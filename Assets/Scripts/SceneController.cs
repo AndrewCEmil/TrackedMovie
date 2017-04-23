@@ -36,11 +36,19 @@ public static class SceneController {
 	}
 
 	public static void LoadChapterOne() {
-		SceneManager.LoadScene ("ChapterOne");
+		SceneManager.LoadScene ("ChapterOneScene");
 	}
 
 	public static void LoadChapterTwo() {
-		SceneManager.LoadScene ("ChapterTwo");
+		SceneManager.LoadScene ("ChapterTwoScene");
+	}
+
+	public static void LoadChapterThree(bool eaten) {
+		if (eaten) {
+			SceneManager.LoadScene ("ChapterThreeEatenScene");
+		} else {
+			SceneManager.LoadScene ("ChapterThreeShotScene");
+		}
 	}
 
 	public static void LoadAboutScene() {

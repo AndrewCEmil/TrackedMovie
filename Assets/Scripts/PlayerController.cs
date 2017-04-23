@@ -183,9 +183,11 @@ public class PlayerController : MonoBehaviour {
 
 	public void ChildShot() {
 		//TODO
+		SceneController.LoadChapterThree(false);
 	}
 
 	public void ChildEaten() {
 		//TODO
+		SceneController.LoadChapterThree(true);
 	}
 }

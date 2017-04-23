@@ -105,17 +105,23 @@ public class KidController : MonoBehaviour {
 	{
 		if (AtTarget ()) {
 			MaybeUpdateTarget ();
-		} else if (sceneName == Scenes.SceneName.OuterHouseScene) {
-			Vector3 currentPos = currentWaypoint.transform.position;
-			currentPos.z = currentPos.z - 2;
-			transform.position = transform.position + ((currentPos - transform.position).normalized * speed);
 		} else {
-			transform.position = transform.position + ((currentWaypoint.transform.position - transform.position).normalized * speed);
+			transform.position = transform.position + ((currentWaypointPosition() - transform.position).normalized * speed);
 		}
 	}
 
 	private bool AtTarget() {
-		return Vector3.Distance (transform.position, currentWaypoint.transform.position) < 1;
+		return Vector3.Distance (transform.position, currentWaypointPosition()) < 1;
+	}
+
+	private Vector3 currentWaypointPosition() {
+		if (sceneName == Scenes.SceneName.OuterHouseScene) {
+			Vector3 currentPos = currentWaypoint.transform.position;
+			currentPos.z = currentPos.z - 2;
+			return currentPos;
+		} else {
+			return currentWaypoint.transform.position;
+		}
 	}
 
 	private void MaybeUpdateTarget() {
