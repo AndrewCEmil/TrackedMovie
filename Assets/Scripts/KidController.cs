@@ -67,9 +67,7 @@ public class KidController : MonoBehaviour {
 			"W1", 
 			"W2", 
 			"W3", 
-			"W4",
-			"W5",
-			"W6"
+			"W4"
 		};
 	}
 
@@ -155,7 +153,7 @@ public class KidController : MonoBehaviour {
 		if (Scenes.isHouseScene(sceneName)) {
 			return currentWaypoint.name == "BedroomWaypoint";
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
-			return currentWaypoint.name == "W6";
+			return currentWaypoint.name == "W4";
 		}
 		return false;
 	}

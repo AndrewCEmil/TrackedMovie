@@ -40,9 +40,7 @@ public class PlayerController : MonoBehaviour {
 			"W1", 
 			"W2", 
 			"W3", 
-			"W4",
-			"W5",
-			"W6"
+			"W4"
 		};
 	}
 
@@ -126,7 +124,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	private bool InTerminalPosition() {
-		return currentWaypoint.name == "W7";
+		return currentWaypoint.name == "W4";
 	}
 
 	private void DoMovement() {
