@@ -18,7 +18,7 @@ public class KidController : MonoBehaviour {
 		CreatePath ();
 		startTime = -1.0f;
 		if (sceneName == Scenes.SceneName.InnerHouseScene) {
-			currentWaypoint = GameObject.Find ("StairWaypoint");
+			currentWaypoint = GameObject.Find ("StartWaypoint");
 			playerController = player.GetComponent<PlayerController> ();
 		} else if (sceneName == Scenes.SceneName.ParkScene) {
 			currentWaypoint = GameObject.Find ("W0");
@@ -42,6 +42,7 @@ public class KidController : MonoBehaviour {
 
 	void CreateInnerHousePath() {
 		path = new List<string> () {
+			"StartWaypoint", 
 			"StairWaypoint", 
 			"PorchWaypoint", 
 			"FoyerWaypoint", 
